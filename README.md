@@ -6,7 +6,7 @@ This is a basic mdbook to provide examples of using [C3](https://c3-lang.org/). 
 
 To build the docs run:
 ```sh
-$ mdbook build --dest-dir docs
+$ mdbook build
 ```
 
 The docs will then be deployed onto github pages on commit.
