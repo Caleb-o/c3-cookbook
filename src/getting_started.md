@@ -13,7 +13,7 @@ Use one of the following sources to download or build the C3 compiler from sourc
 
 ## About this book
 
-> [!NOTE]
+> NOTE
 > This book is being written with 0.6.x in mind. It may include nightly releases that have fixed problems with 0.6.2.
 > If an example doesn't quite work with 0.6.2, try using the latest compiler.
 
