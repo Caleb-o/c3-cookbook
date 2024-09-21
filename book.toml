@@ -6,6 +6,3 @@ src = "src"
 
 [output.html]
 git-repository-url = "https://github.com/Caleb-o/c3-cookbook"
-
-[build]
-build-dir = "docs"
