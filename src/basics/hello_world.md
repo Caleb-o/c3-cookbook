@@ -93,7 +93,7 @@ Functions in C3 use the `fn` keyword to denote a function declaration. It is the
 Error: Functions from other modules must be prefixed with the module name.
 ```
 
-Any function that comes from a different module, ***must*** be prefixed with its module name. This helps the reader also understand where this function comes from. We will see this often later, when it comes to types as well.
+Any function that comes from a different module, ***must*** be prefixed with its module name. This helps the reader also understand where this function comes from. We will see this often later, when it comes to types as well. More with modules [here](modules.md).
 
 > There is another way we can write this function. This will be familiar for those who have used JavaScript:
 > ```c++
