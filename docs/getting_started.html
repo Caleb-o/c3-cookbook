@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="getting_started.html" class="active">Getting Started</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="getting_started.html" class="active">Getting Started</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">The Basics</li><li class="chapter-item expanded "><a href="basics/hello_world.html"><strong aria-hidden="true">1.</strong> Hello World!</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -147,6 +147,9 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+                        <a href="https://github.com/Caleb-o/c3-cookbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
 
                     </div>
                 </div>
@@ -176,25 +179,31 @@
                         <h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
 <p><a href="https://github.com/Caleb-o/c3-cookbook/stargazers"><img src="https://img.shields.io/github/stars/Caleb-o/c3-cookbook?style=square&amp;color=#30a14e" alt="" /></a></p>
 <p><em>"C3 is a programming language that builds on the syntax and semantics of the C language, with the goal of evolving it while still retaining familiarity for C programmers."</em></p>
+<h2 id="about-this-book"><a class="header" href="#about-this-book">About this book</a></h2>
+<div class="warning">
+This book is being written with 0.6.x in mind. It may include nightly releases that have fixed problems with 0.6.2.
+If an example doesn't quite work with 0.6.2, try using the [latest](https://github.com/c3lang/c3c/releases/tag/latest) compiler.
+</div>
+<p>This was inspired by the <a href="https://github.com/zigcc/zig-cookbook">Zig Cookbook</a> which displays common and more idiomatic ways to use Zig around certain problems. I wanted to create a community driven book, that would do the same for C3. I believe it is something that can help developers pickup C3, as it provides another source to browse.</p>
+<p>I have used new languages where documentation and community driven media was scarce, which made it very hard to get an understanding of the language in a more practical manner. Hopefully this book can help with this issue and get some more people into C3.</p>
+<p>Since I'm writing this as a newbie to C3, there are bound to be issues or better ways to achieve things.</p>
+<h3 id="contributing-to-the-book"><a class="header" href="#contributing-to-the-book">Contributing to the book</a></h3>
+<ul>
+<li>Found a typo or an example does not work? <a href="https://github.com/Caleb-o/c3-cookbook/issues/new">Create an issue here</a></li>
+<li>Want to add more examples? <a href="https://github.com/Caleb-o/c3-cookbook">Create a fork</a></li>
+</ul>
 <h2 id="installing-c3"><a class="header" href="#installing-c3">Installing C3</a></h2>
 <p>Use one of the following sources to download or build the C3 compiler from source:</p>
 <ul>
 <li><a href="https://c3-lang.org/">Website</a></li>
 <li><a href="https://github.com/c3lang/c3c/releases">Github Release</a></li>
-<li><a href="https://github.com/c3lang/c3c">More options</a> on their github page, to build from source or use an OS repository</li>
+<li><a href="https://github.com/c3lang/c3c">More options</a> on their Github page, to build from source or use an OS repository</li>
 </ul>
-<h2 id="about-this-book"><a class="header" href="#about-this-book">About this book</a></h2>
-<blockquote>
-<p>NOTE
-This book is being written with 0.6.x in mind. It may include nightly releases that have fixed problems with 0.6.2.
-If an example doesn't quite work with 0.6.2, try using the latest compiler.</p>
-</blockquote>
-<p>This was inspired by the <a href="https://github.com/zigcc/zig-cookbook">Zig Cookbook</a> which displays common and more idiomatic ways to use Zig around certain problems. I wanted to create a community driven book, that would do the same for C3. I believe it is something that can help developers pickup C3, as it provides another source to browse.</p>
-<p>I have used new languages where documentation and community driven media was scarce, which made it very hard to get an understanding of the language in a more practical manner. Hopefully this book can help with this issue and get some more people into C3.</p>
-<h3 id="contributing-to-the-book"><a class="header" href="#contributing-to-the-book">Contributing to the book</a></h3>
+<h2 id="editors--tooling"><a class="header" href="#editors--tooling">Editors / Tooling</a></h2>
+<p>There is a work in progress LSP that can be found <a href="https://github.com/pherrymason/c3-lsp">here</a>.</p>
 <ul>
-<li>Found a typo or example code does not work? <a href="https://github.com/Caleb-o/c3-cookbook/issues/new">Create an issue here</a></li>
-<li>Want to add more examples? <a href="https://github.com/Caleb-o/c3-cookbook">Create a fork</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=tonios2.c3-vscode">VSCode</a> extension can be installed through the extension tab</li>
+<li><a href="https://github.com/c3lang/editor-plugins">VIM / Emacs / Sublime / Zed / ...</a> are located in a single repository</li>
 </ul>
 
                     </main>
@@ -202,6 +211,9 @@ If an example doesn't quite work with 0.6.2, try using the latest compiler.</p>
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
+                            <a rel="next prefetch" href="basics/hello_world.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -210,6 +222,9 @@ If an example doesn't quite work with 0.6.2, try using the latest compiler.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
+                    <a rel="next prefetch" href="basics/hello_world.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
