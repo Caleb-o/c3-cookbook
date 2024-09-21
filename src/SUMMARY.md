@@ -21,8 +21,9 @@
   - [Using stdio]()
   - [Filesystem]()
   - [Compiletime, Macros and Reflection]()
+  - [Using C with C3]()
 
 - [Projects](projects.md)
   - [Echo TCP Client/Server]()
   - [Writing an Allocator]()
-  - [Calculator Evaluator](./projects/calculator.md)
+  - [Parser and Evaluator](./projects/calculator.md)

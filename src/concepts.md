@@ -10,3 +10,4 @@ Topics we will cover:
 - [Using stdio](): reading and writing to the console with stdio
 - [The Filesystem](): reading and writing files
 - [Compiletime, Macros and Reflection]()
+- [Using C with C3]()
