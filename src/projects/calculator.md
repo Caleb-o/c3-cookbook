@@ -77,6 +77,73 @@ That's the end of our lexing methods and now we head over to parsing.
 
 ### Parsing Expressions
 
+This is where the fun begins! Parsing is the step where our syntax matters. For a programming language, this is how we might collect variables, functions, structures etc into an AST. We will still do this for our calculator, but our AST will be pretty simple. All we need for the calculator, is a binaryop and a literal.
+
+> As an exercise, you can also implement unary expressions, like negative numbers.
+
+Since our AST is simple, we can define it in a few lines of code.
+
+```c++
+{{#include ../../examples/projects/calculator.c3:46:63}}
+```
+
+We create an enum so we can tag our `Node` to know what it contains. Our `BinaryOp` is a node that represents something like `1 + 2`. Then we have our `number` which is just a `float` that we will collect from our token.
+
+As before with our lexer, we will create a helper method for consuming tokens:
+
+```c++
+{{#include ../../examples/projects/calculator.c3:145:155}}
+```
+
+If the current token in our parser matches the kind provided, it will consume the token, fetch the next token and return the old token. This is so we can capture the token and use it later. If the token doesn't match, then we print a basic error message and return a fault. This is the same fault used before in our `get_token`.
+
+This will be a large section of code, but it will implement the entire parsing of expressions.
+
+```c++
+{{#include ../../examples/projects/calculator.c3:157:216}}
+```
+
+We are using a recursive descent parser, so that means we call one function after another and recursively (basically). So we start in `parse`, which then calls `term`, then `factor` then `primary`. So on a call to `parse`, we start in parse and end up in primary, then work our way back up the call stack. In both `term` and `factor` we have similar code checking for operators, then setting the node to a `BinaryOp`. Notice how we pass `node` in as the second argument, then call the next function down eg. term will call factor. This is used for parsing precedence, so we can evaluate our expression correctly.
+
+That is now the end of the parser. A simple helper function for consuming tokens, then the parsing functions.
+
+### Evaluating our AST
+
+To start our evaluation, we will implement the `calculate` function we saw in `main`. This is our entry that will handle parsing and evaluating.
+
+```c++
+{{#include ../../examples/projects/calculator.c3:240:}}
+```
+
+To keep our memory handling simple, we use the `DynamicArenaAllocator` which will expand as we need and free all the memory at the end. Notice the `mem::@scoped(&dynamic_arena)`. This is where our `mem::new` calls end up allocating to. Let's dive into `evaluate`:
+
+```c++
+{{#include ../../examples/projects/calculator.c3:218:224}}
+```
+
+This function is pretty safe, as the `unreachable` means we probably haven't implemented something. Our calculator only has two nodes, so our cases are covered here. Something to note, is that every `evaluate_*` function returns a `float`. Since this is our main value type in the calculator, we keep things simple.
+
+> In a scripting language using tree-walk evaluation (which is what this implementation is), we might use something like a `Value` type to express more complex types like strings, bools and functions.
+
+We can take a look at the simplest function: `evaluate_literal`
+
+```c++
+{{#include ../../examples/projects/calculator.c3:237:238}}
+```
+
+Since our AST node for the literal holds the value, we can simply return the number. Next is the `evaluate_binary` function, which will do the work of operators:
+
+```c++
+{{#include ../../examples/projects/calculator.c3:226:235}}
+```
+
+For sanity reasons, we take reference to the `binary` field so we can juse use a variable throughout. We switch on the operator's token kind, then return the evaluation of `lhs <op> rhs`. If we were to implement another operator, our unreachable will trigger to let you know at run-time.
+
+And that's it! We've implemented a basic parser and evaluator for a calculator! Below is the result of running our code and the full source in case something is broken. If you want to try more examples, change the `expression` variable to something else and see what happens.
+
+> If you want to do more, try to implement negative numbers and the `%` operator.
+> Languages are cool and if you thought this was fun, take a look at [Crafting Interpreters](https://craftinginterpreters.com/) by Bob Nystrom.
+
 ## Result
 
 Running the project:

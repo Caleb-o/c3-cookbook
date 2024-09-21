@@ -243,11 +243,12 @@ fn float! calculate(String source) {
     
     dynamic_arena.init(1024, allocator::heap());
 
-    mem::@scoped(&dynamic_arena) {
-        Parser parser = new_parser(source);
-        // Get initial token
-        parser.current = parser.get_token()!;
+    // Create our parser
+    Parser parser = new_parser(source);
+    // Get initial token
+    parser.current = parser.get_token()!;
 
+    mem::@scoped(&dynamic_arena) {
         // Parse and evaluate
         Node *root = parser.parse()!;
         return evaluate(root);
