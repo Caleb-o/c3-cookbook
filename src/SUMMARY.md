@@ -1,8 +1,13 @@
 # Summary
 
-[Getting Started](getting_started.md)
+
+# Foreword
+
+- [Getting Started](getting_started.md)
 
 ---
+
+# A Glimpse of C3
 
 - [General Overview](general/general.md)
   - [Hello World!](general/hello_world.md)
@@ -10,9 +15,14 @@
 
 ---
 
-- [Examples](examples.md)
+# Concepts and Projects
+
+- [Concepts](concepts.md)
   - [Using stdio]()
   - [Filesystem]()
-  - [Echo Client/Server]()
-  - [Calculator Evaluator](./projects/calculator.md)
+  - [Compiletime, Macros and Reflection]()
+
+- [Projects](projects.md)
+  - [Echo TCP Client/Server]()
   - [Writing an Allocator]()
+  - [Calculator Evaluator](./projects/calculator.md)
