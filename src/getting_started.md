@@ -17,7 +17,7 @@ I have used new languages where documentation and community driven media was sca
 Since I'm writing this as a newbie to C3, there are bound to be issues or better ways to achieve things.
 
 ### Contributing to the book
-- Found a typo or an example does not work? [Create an issue here](https://github.com/Caleb-o/c3-cookbook/issues/new)
+- Found a typo or an example does not work? [Create an issue](https://github.com/Caleb-o/c3-cookbook/issues/new)
 - Want to add more examples? [Create a fork](https://github.com/Caleb-o/c3-cookbook)
 
 ## Installing C3
