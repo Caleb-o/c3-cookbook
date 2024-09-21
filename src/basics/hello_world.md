@@ -100,6 +100,6 @@ Any function that comes from a different module, ***must*** be prefixed with its
 > fn void main() => io::printn("Hello, World!");
 > ```
 > 
-> It is possible to write a single expression function, using the `=>` arrow syntax. > This is useful for writing simple functions that return a value.
+> It is possible to write a single expression function, using the `=>` arrow syntax. This is useful for writing simple functions that return a value.
 
 This was probably quite a long explanation of Hello World, but this is essentially how this book should be structured. We will write an example, then give an explanation on the hows and why. Hopefully this can help give better understanding of the code written and leaves you both curious for more and with questions answered.
