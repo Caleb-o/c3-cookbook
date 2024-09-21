@@ -186,8 +186,9 @@
 <p>Creating a project is quite simple in C3. We can use the <code>c3c</code> executable to initialise, build and run our project.</p>
 <p>Let's create a new project:</p>
 <pre><code class="language-sh">$ c3c init myproject
+$ cd myproject
 </code></pre>
-<p>This will create a few directories, a license, a <code>project.json</code> and a readme. This includes the <code>build</code> directory, which is where your project will be compiled into. In C3 we use the <code>src</code> directory and this is where you will find the <code>main.c3</code> file. You can see more details about project structure in the <a href="https://c3-lang.org/guide/my-first-project/">C3 guide</a>.</p>
+<p>We now have a new project directory and this would have created a few directories within it, a license, a <code>project.json</code> and a readme. This includes the <code>build</code> directory, which is where your project will be compiled into. In C3 we use the <code>src</code> directory and this is where you will find the <code>main.c3</code> file. You can see more details about project structure in the <a href="https://c3-lang.org/guide/my-first-project/">C3 guide</a>.</p>
 <p>Let's open the main file <code>src/main.c3</code> in your editor and write this code:</p>
 <pre><code class="language-c++">module myproject;
 import std::io;
@@ -277,22 +278,6 @@ Hello, World!
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

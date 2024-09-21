@@ -11,9 +11,10 @@ Creating a project is quite simple in C3. We can use the `c3c` executable to ini
 Let's create a new project:
 ```sh
 $ c3c init myproject
+$ cd myproject
 ```
 
-This will create a few directories, a license, a `project.json` and a readme. This includes the `build` directory, which is where your project will be compiled into. In C3 we use the `src` directory and this is where you will find the `main.c3` file. You can see more details about project structure in the [C3 guide](https://c3-lang.org/guide/my-first-project/).
+We now have a new project directory and this would have created a few directories within it, a license, a `project.json` and a readme. This includes the `build` directory, which is where your project will be compiled into. In C3 we use the `src` directory and this is where you will find the `main.c3` file. You can see more details about project structure in the [C3 guide](https://c3-lang.org/guide/my-first-project/).
 
 Let's open the main file `src/main.c3` in your editor and write this code:
 ```c++
