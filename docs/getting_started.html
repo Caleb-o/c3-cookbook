@@ -180,10 +180,10 @@
 <p><a href="https://github.com/Caleb-o/c3-cookbook/stargazers"><img src="https://img.shields.io/github/stars/Caleb-o/c3-cookbook?style=square&amp;color=#30a14e" alt="" /></a></p>
 <p><em>"C3 is a programming language that builds on the syntax and semantics of the C language, with the goal of evolving it while still retaining familiarity for C programmers."</em></p>
 <h2 id="about-this-book"><a class="header" href="#about-this-book">About this book</a></h2>
-<div class="warning">
-This book is being written with 0.6.x in mind. It may include nightly releases that have fixed problems with 0.6.2.
-If an example doesn't quite work with 0.6.2, try using the [latest](https://github.com/c3lang/c3c/releases/tag/latest) compiler.
-</div>
+<blockquote>
+<p>This book is being written with 0.6.x in mind. It may include nightly releases that have fixed problems with 0.6.2.
+If an example doesn't quite work with 0.6.2, try using the <a href="https://github.com/c3lang/c3c/releases/tag/latest">latest</a> compiler.</p>
+</blockquote>
 <p>This was inspired by the <a href="https://github.com/zigcc/zig-cookbook">Zig Cookbook</a> which displays common and more idiomatic ways to use Zig around certain problems. I wanted to create a community driven book, that would do the same for C3. I believe it is something that can help developers pickup C3, as it provides another source to browse.</p>
 <p>I have used new languages where documentation and community driven media was scarce, which made it very hard to get an understanding of the language in a more practical manner. Hopefully this book can help with this issue and get some more people into C3.</p>
 <p>Since I'm writing this as a newbie to C3, there are bound to be issues or better ways to achieve things.</p>
@@ -229,6 +229,22 @@ If an example doesn't quite work with 0.6.2, try using the [latest](https://gith
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

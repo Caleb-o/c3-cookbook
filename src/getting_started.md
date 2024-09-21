@@ -6,10 +6,9 @@
 
 ## About this book
 
-<div class="warning">
-This book is being written with 0.6.x in mind. It may include nightly releases that have fixed problems with 0.6.2.
-If an example doesn't quite work with 0.6.2, try using the [latest](https://github.com/c3lang/c3c/releases/tag/latest) compiler.
-</div>
+
+> This book is being written with 0.6.x in mind. It may include nightly releases that have fixed problems with 0.6.2.
+> If an example doesn't quite work with 0.6.2, try using the [latest](https://github.com/c3lang/c3c/releases/tag/latest) compiler.
 
 This was inspired by the [Zig Cookbook](https://github.com/zigcc/zig-cookbook) which displays common and more idiomatic ways to use Zig around certain problems. I wanted to create a community driven book, that would do the same for C3. I believe it is something that can help developers pickup C3, as it provides another source to browse. 
 
