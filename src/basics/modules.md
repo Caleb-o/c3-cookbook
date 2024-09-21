@@ -1,8 +1,6 @@
 # Modules
 
-> 🚧 Work in progress 🚧
-
-[Modules](https://c3-lang.org/references/docs/modules/) in C3 are quite interesting. Every file must start with a module declaration, as such `module mymodule`. A module is a container that namespaces our code. Later on, I will show how modules are our gateway into using generics.
+[Modules](https://c3-lang.org/references/docs/modules/) in C3 are quite interesting. Every file must start with a module declaration, as such `module mymodule`. A module is a container that namespaces our code. Later on, I will show how modules are our gateway into using generics. This is not full coverage on modules, but a glimpse to understand how to use them.
 
 Here's a list of things that will be covered:
 - [Using modules and its properties](#using-modules)
@@ -51,13 +49,13 @@ In C3, generics are expressed through modules. This is different to other langua
 {{#include ../../examples/basics/modules_generic.c3::5}}
 ```
 
-Since we use the module, how does that look when importing?
+Notice the `(<Type>)` syntax. This is also used when passing the generic parameter(s). Since we declare generics on the module, how does that look when importing?
 
 ```c++
 {{#include ../../examples/basics/modules_generic_use.c3::1}}
 ```
 
-This is just importing as normal? So how do we use the generic? We can use our `Foo` like this:
+This is just importing as normal? So how do we use the generic? We can use our `Foo` type that we declared like this:
 
 ```c++
 {{#include ../../examples/basics/modules_generic_use.c3::8}}
@@ -69,7 +67,9 @@ We can extend our generic module to include a function, that takes the generic v
 {{#include ../../examples/basics/modules_generic.c3}}
 ```
 
-Using this function is quite similar:
+Then use the generic function we made like so:
 ```c++
 {{#include ../../examples/basics/modules_generic_use.c3:10:}}
 ```
+
+More on generics, how generic modules work and constraints can be found in the [guide](https://c3-lang.org/references/docs/generics/).
