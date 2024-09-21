@@ -4,9 +4,9 @@
 
 ---
 
-- [The Basics](basics/the_basics.md)
-  - [Hello World!](basics/hello_world.md)
-  - [Modules](basics/modules.md)
+- [General Overview](general/general.md)
+  - [Hello World!](general/hello_world.md)
+  - [Modules](general/modules.md)
 
 ---
 
