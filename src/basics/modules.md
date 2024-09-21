@@ -14,11 +14,11 @@ As mentioned in our [Hello World](hello_world.md) example, we explained that a m
 
 ```c++
 // foo.c3
-module mymodule;
+{{#include ../../examples/basics/modules.c3}}
 ...
 
 // bar.c3
-module mymodule;
+{{#include ../../examples/basics/modules.c3}}
 ...
 ```
 
@@ -26,11 +26,11 @@ Here we can see that both our `foo` and `bar` files have `mymodule` declared. So
 
 ```c++
 // foo.c3
-module mymodule;
+{{#include ../../examples/basics/modules.c3}}
 ...
 
 // hello/somewhere/bar.c3
-module mymodule;
+{{#include ../../examples/basics/modules.c3}}
 ...
 ```
 
@@ -48,51 +48,28 @@ We can now use `mymodule` and it's as easy as that.
 In C3, generics are expressed through modules. This is different to other languages, where you might write something like `<T, U>` on a type or function and be good. With C3, you do this at the module level instead.
 
 ```c++
-module genericmodule(<Type>);
-
-struct Foo {
-  Type bar;
-}
+{{#include ../../examples/basics/modules_generic.c3::5}}
 ```
 
 Since we use the module, how does that look when importing?
 
 ```c++
-import genericmodule;
+{{#include ../../examples/basics/modules_generic_use.c3::1}}
 ```
 
 This is just importing as normal? So how do we use the generic? We can use our `Foo` like this:
 
 ```c++
-import genericmodule;
-
-Foo(<int>) foo;
-
-// or use define
-def IntFoo = Foo(<int>);
-
-IntFoo foo;
+{{#include ../../examples/basics/modules_generic_use.c3::8}}
 ```
 
 We can extend our generic module to include a function, that takes the generic value and returns it:
 
 ```c++
-module genericmodule(<Type>);
-
-struct Foo {
-  Type bar;
-}
-
-fn Type return_t(Type v) {
-  return v;
-}
+{{#include ../../examples/basics/modules_generic.c3}}
 ```
 
 Using this function is quite similar:
 ```c++
-import genericmodule;
-
-fn void main() {
-  // NOTE: The generic parameter is required here, as well as the module name prefix
-  int a = genericmodule::return_t(<int>)(10);
-}
+{{#include ../../examples/basics/modules_generic_use.c3:10:}}
+```
