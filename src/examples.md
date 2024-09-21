@@ -8,4 +8,4 @@ Topics we will cover:
 - [Using stdio](): reading and writing to the console with stdio
 - [The Filesystem](): reading and writing files
 - [TCP Server](): a basic echo TCP client and server
-- [Evaluating a basic expression](): create a small parser and evaluator for a calculator
+- [Evaluating a basic expression](./projects/calculator.md): create a small parser and evaluator for a calculator

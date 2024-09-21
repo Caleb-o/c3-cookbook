@@ -14,4 +14,4 @@
   - [Using stdio]()
   - [Filesystem]()
   - [Echo Client/Server]()
-  - [Calculator Evaluator]()
+  - [Calculator Evaluator](./projects/calculator.md)

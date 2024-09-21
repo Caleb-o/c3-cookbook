@@ -1,4 +1,5 @@
 module project::calculator;
+
 import std::io;
 import std::core::string;
 import std::core::mem;
@@ -124,7 +125,7 @@ fn Token! Parser.make_number(&self) {
     self.advance(); // Increment as we know the first character
 
     // Consume numbers
-    while (!self.at_end() && range.contains(self.source[self.ip])) {
+    while (!self.at_end() && range.contains(self.peek())) {
         self.advance();
     }
 
@@ -133,7 +134,7 @@ fn Token! Parser.make_number(&self) {
         self.advance();
 
         // Consume numbers again
-        while (!self.at_end() && range.contains(self.source[self.ip])) {
+        while (!self.at_end() && range.contains(self.peek())) {
             self.advance();
         }
     }
