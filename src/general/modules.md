@@ -1,6 +1,8 @@
 # Modules
 
-[Modules](https://c3-lang.org/references/docs/modules/) in C3 are quite interesting. Every file must start with a module declaration, as such `module mymodule`. A module is a container that namespaces our code. Later on, I will show how modules are our gateway into using generics. This is not full coverage on modules, but a glimpse to understand how to use them.
+> This is not full coverage of what modules are or do. If you want to learn more, visit [the guide](https://c3-lang.org/references/docs/modules/).
+
+Modules in C3 are quite interesting. Every file must start with a module declaration, as such `module mymodule`. A module is a container that namespaces our code. Later on, I will show how modules are our gateway into using generics.
 
 Here's a list of things that will be covered:
 - [Using modules and its properties](#using-modules)
