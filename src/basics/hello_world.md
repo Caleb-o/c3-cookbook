@@ -1,8 +1,39 @@
 # Hello World!
 
 Let's write the classic example, Hello World! But before that, we have two options with how to proceed:
-- [Using a project](#using-a-project)
 - [Running directly](#running-directly)
+- [Using a project](#using-a-project)
+
+## Running directly
+
+We can create a new file with the `.c3` extension. Then we can write this code:
+```c++
+{{#include ../../examples/basics/hello_world.c3}}
+```
+
+We will use the compiler to build, run and then dispose of the executable:
+```sh
+$ c3c compile-run --run-once main.c3
+```
+
+This should then print to the console
+```sh
+Program linked to executable 'myproject'.
+Launching ./myproject
+Hello, World!
+Program completed with exit code 0.
+```
+
+You can also just compile the file and run the executable directly:
+
+```sh
+$ c3c compile main.c3 -o hello
+$ ./hello
+
+Hello, World!
+```
+
+[Done](#explaining-our-program)
 
 ## Using a project
 
@@ -34,37 +65,6 @@ Hello, World!
 Program completed with exit code 0.
 ```
 
-[Done](#explaining-our-program)
-
-## Running directly
-
-We can create a new file with the `.c3` extension. Then we can write this code:
-```c++
-{{#include ../../examples/basics/hello_world.c3}}
-```
-
-We will use the compiler to build, run and then dispose of the executable:
-```sh
-$ c3c compile-run --run-once main.c3
-```
-
-This should then print to the console
-```sh
-Program linked to executable 'myproject'.
-Launching ./myproject
-Hello, World!
-Program completed with exit code 0.
-```
-
-You can also just compile the file and run the executable directly:
-
-```sh
-$ c3c compile main.c3 -o hello
-$ ./hello
-
-Hello, World!
-```
-
 ### Explaining our program
 
 You have now written your first C3 program. Let's break down what is happening in our code. We can start with the first line:
@@ -73,7 +73,7 @@ You have now written your first C3 program. Let's break down what is happening i
 module myproject;
 ```
 
-Every file must start with a module name. We can think of a module like a namespace, as each file that has the same module name is considered the same module. Module names are not tied to files or the directory they are in, so it is up to you to name them correctly. To avoid clashing, we must use longer and/or more detailed names. This could be something like `projectname::foo::bar::baz`.
+Every file should start with a module name, if we omit this, then the compiler will try its best to generate one using the file. We can think of a module like a namespace, as each file that has the same module name is considered the same module. Module names are not tied to files or the directory they are in, so it is up to you to name them correctly. To avoid clashing, we must use longer and/or more detailed names. This could be something like `projectname::foo::bar::baz`.
 
 ```c++
 import std::io;
@@ -87,7 +87,7 @@ fn void main() {
 }
 ```
 
-Functions in C3 use the `fn` keyword to denote a function declaration. It is then followed by the return type (void) and then a function name and its parameters. This should look pretty familiar for anyone who's used a C-style language. The interesting thing here is our `io::printn`. If you tried to remove the `io::` prefix, you will see this error:
+Functions in C3 use the `fn` keyword to denote a function declaration. It is then followed by the return type and then a function name and its parameters. This should look pretty familiar for anyone who's used a C-style language. The interesting thing here is our `io::printn`. If you tried to remove the `io::` prefix, you will see this error:
 
 ```sh
 Error: Functions from other modules must be prefixed with the module name.
