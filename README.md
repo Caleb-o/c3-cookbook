@@ -4,6 +4,10 @@ This is a basic mdbook to provide examples of using [C3](https://c3-lang.org/). 
 
 ## Building Locally
 
+### Requirements
+- Rust
+- [mdbook](https://rust-lang.github.io/mdBook/guide/installation.html)
+
 To build the docs run:
 ```sh
 $ mdbook build
