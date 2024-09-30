@@ -70,7 +70,7 @@ To use this function, we can now add our main function and call it like so:
 `src/main.c3`
 ```c++
 fn int main() {
-	io::printfn("3 + 4 = %s", add(10, 20));
+	io::printfn("3 + 4 = %s", add(3, 4));
 	return 0;
 }
 ```
