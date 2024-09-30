@@ -1,6 +1,6 @@
 # Calculator Evaluator
 
-> 🚧 This is a work in progress
+> 🚧 This is a work in progress, so it may not be complete or finalised.
 
 We are going to create a small project, that can lex, parse and evaluate an expression for a basic calculator. We will try and keep this nice and easy and so we are going to merge a few things together for simplicity. You can see the full example at [the end](#final-code).
 
