@@ -2,7 +2,7 @@
 
 > 🚧 This is a work in progress, so it may not be complete or finalised.
 
-We will create a basic wrapper over a C function, then use it within C3. To keep this relatively simple, we'll use the standard file structure of a project as it will help section off our libraries.
+We will create a basic wrapper over a C function, then use it within C3. To keep this relatively simple, we'll use the standard file structure of a project as it is the simplest way of managing our files.
 
 ## Setup
 
@@ -11,13 +11,124 @@ We can do this by:
 $ c3c init mycproject
 ```
 
-If you want something minimal to use the compiler directly:
+If we intend on making this a library and using the compiler directly, we can do something like this:
 ```sh
 $ mkdir lib
 $ mkdir src
 ```
 
-Since this is mostly a project surrounding our C code, we will start there. Let's start by creating a directory in the `lib` folder called, "littlec.c3l". It will serve as our library that holds our wrapper code.
+## C Code
+
+Let us start writing our tiny wrapper. First, we will create our C header file, as this is only a few lines. Here's our header:
+
+`littlec.h`
+```c
+#ifndef LITTLEC_H
+#define LITTLEC_H
+
+int add(int a, int b);
+
+#endif
+```
+
+Obviously the most interesting function we could write here. Just to keep our code simple, we will just be adding two numbers in C and returning that to C3. Now for our implementation:
+
+`littlec.c`
+```c
+#include "littlec.h"
+
+int add(int a, int b) {
+  return a + b;
+}
+```
+
+From here, we can take two routes:
+
+- [Using in Source](#using-in-source)
+- [Creating a Library](#creating-a-library)
+
+## Using in Source
+
+For very small bindings, like this example, we can get away with using it directly in source without a lib. Let's start by opening `src/main.c3` (or your main file) and take a look:
+
+`src/main.c3`
+```c++
+module cinterop;
+import std::io;
+
+extern fn int add(int a, int b);
+```
+
+This is pretty straight forward for our add function, as it is basically identical in our C3 code. If we wanted to use a function that has a different name, we can use the `@extern` attribute, like so:
+
+```c++
+extern fn int add(int a, int b) @extern("ADD");
+```
+
+To use this function, we can now add our main function and call it like so:
+
+`src/main.c3`
+```c++
+fn int main() {
+	io::printfn("3 + 4 = %s", add(10, 20));
+	return 0;
+}
+```
+
+Before we can run the code, we must tell the compiler how to find our C code. If you're using a project, you can open the `project.json` and uncomment the `c-sources` property:
+
+```json
+// C sources if the project also compiles C sources
+// relative to the project file.
+"c-sources": [ "csource/**" ],
+```
+
+If your C files are in a different directory, replace `csource` with your directory. You can also include the file directly:
+
+```json
+// C sources if the project also compiles C sources
+// relative to the project file.
+"c-sources": [ "littlec.c" ],
+```
+
+That's the final thing we needed. Let's try running our code.
+
+If you're using a project:
+```sh
+$ c3c run
+# OR:
+$ c3c build
+$ ./build/<your_executable>
+```
+
+To compile directly, we must compile our C code to an object file first:
+```sh
+$ gcc -O3 -c little.c
+```
+
+> This assumes using Linux, so you might have a `.obj` file instead.
+> If you don't have `gcc` you can install mingw, or use your platforms C compiler.
+
+Then we can compile our code, passing in the object file:
+
+```sh
+$ c3c compile src/main.c3 -o build/helloc -z ./csources/littlec.o
+```
+
+> `-z` will pass in our object file. Use the path to your object file, if you're not using csources and/or a different name.
+
+### Output
+
+Then finally the output of the executable:
+```sh
+3 + 4 = 7
+```
+
+We are now done! Head down to [the end](#the-end) to learn more, or continue reading to create a library.
+
+## Creating a Library
+
+Let's start by creating a directory in the `lib` folder called, "littlec.c3l". It will serve as our library that holds our wrapper code.
 
 > Note the `.c3l` extension of the directory. This is important, so it must be used.
 
@@ -51,32 +162,7 @@ Before we get to the code, lets go over what is here.
 
 For more details and a list of properties that are allowed, use `c3c --list-manifest-properties` to view.
 
-### C Code
-
-Okay, now that we've looked into our manifest, we can start writing our tiny wrapper. First, we will create our C header file, as this is only a few lines. Here's our header:
-
-`littlec.h`
-```c
-#ifndef LITTLEC_H
-#define LITTLEC_H
-
-int add(int a, int b);
-
-#endif
-```
-
-Obviously the most interesting function we could write here. Just to keep our code simple, we will just be adding two numbers in C and returning that to C3. Now for our implementation:
-
-`littlec.c`
-```c
-#include "littlec.h"
-
-int add(int a, int b) {
-  return a + b;
-}
-```
-
-And that's it. We can now start wrapping our code with our c3i file. 
+We can now start wrapping our code with our c3i file. 
 
 `littlec.c3i`
 ```c++
@@ -91,7 +177,7 @@ Second, we are using a C3 function signature that reflects our `add` function in
 
 And that's our little wrapper completed. Now onto using it.
 
-## Using our Wrapper
+### Using our Wrapper
 
 We can now use our wrapper within our C3 code. If you created a project, we will be using `src/main.c3`, otherwise create a file within `src` or somewhere close to the lib. Here's our code:
 
@@ -124,7 +210,7 @@ $ c3c compile-run --run-once src/main.c3 --obj-out temp --output-dir temp --libd
 
 > Currently there is a [bug](https://github.com/c3lang/c3c/issues/1503) that requires you use `--obj-out <dir>`.
 
-If you're using using a project:
+If you're using a project:
 ```sh
 $ c3c run
 # OR:
@@ -132,9 +218,13 @@ $ c3c build
 $ ./build/<your_executable>
 ```
 
+### Output
+
 Then finally the output of the executable:
 ```sh
 3 + 4 = 7
 ```
+
+## The end
 
 Congratulations, we have put together a C wrapper in C3! This was quite a simple example to get the idea across, but if you're interested in larger examples or wrapping C libraries, check out the [vendor](https://github.com/c3lang/vendor) repository. This repo contains some libraries that are wrappers over C code. You can open up one of the libraries and checkout their `.c3i` file to see how a more real-world wrapper library is created.
