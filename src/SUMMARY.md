@@ -21,7 +21,7 @@
   - [Using stdio]()
   - [Filesystem]()
   - [Compiletime, Macros and Reflection]()
-  - [Using C with C3]()
+  - [Using C with C3](./concepts/using_c.md)
 
 - [Projects](projects.md)
   - [Echo TCP Client/Server]()
